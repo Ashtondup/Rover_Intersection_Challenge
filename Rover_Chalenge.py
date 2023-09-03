@@ -49,8 +49,13 @@ def print_terrain(terrain):
         print(''.join(row))
 
 def main():
-    input_file = 'input.txt'
-    intersection_points, terrain = find_intersections(input_file)
+    try:
+        input_file = 'input.txt'
+        intersection_points, terrain = find_intersections(input_file)
+    except FileNotFoundError:
+        print("The file named input.txt was not found int the same folder as the .py file.")
+    except IOError as e:
+        print(f"An error ocurred while tryning to read the text file: {e}")
 
     print("Intersections")
     for i, point in enumerate(intersection_points, start=1):
@@ -58,6 +63,13 @@ def main():
 
     print("Visual representation Paths")
     print_terrain(terrain)
+    print("\nLegend:")
+    print("X : Start")
+    print("0 : End")
+    print(". : Empty")
+    print("+ : Turn")
+    print("|, - : Linear Movement")
+    print("* : Intersection")
 
 if __name__ == "__main__":
     main()
