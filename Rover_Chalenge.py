@@ -29,6 +29,7 @@ def find_intersections(input_file): # Argument/method that opens the file and re
             instructions = f.readline().strip()
             
             rover = Rover(initial_x, initial_y)
+            terrain[rover.y][rover.x] = 'X'
             for move in instructions:
                 if (rover.x, rover.y) in rovers:
                     intersection_points.add((rover.x, rover.y))
@@ -48,7 +49,7 @@ def find_intersections(input_file): # Argument/method that opens the file and re
                 elif move == 'W':
                     rover.x -= 1
                     terrain[rover.y][rover.x] = '-'
-
+    terrain[rover.y][rover.x] = '0'
     return intersection_points, terrain
 
 def print_terrain(terrain): # Argument/method that will print the terrain
