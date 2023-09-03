@@ -29,7 +29,7 @@ def find_intersections(input_file): # Argument/method that opens the file and re
             instructions = f.readline().strip()
             
             rover = Rover(initial_x, initial_y)
-            terrain[rover.y][rover.x] = 'X'
+            terrain[rover.y][rover.x] = 'X' # Start potition
             for move in instructions:
                 if (rover.x, rover.y) in rovers:
                     intersection_points.add((rover.x, rover.y))
@@ -39,17 +39,19 @@ def find_intersections(input_file): # Argument/method that opens the file and re
                     
                 if move == 'N':
                     rover.y += 1
-                    terrain[rover.y][rover.x] = '|'
+                    terrain[rover.y][rover.x] = '|' # Vertical movement
                 elif move == 'S':
                     rover.y -= 1
-                    terrain[rover.y][rover.x] = '|'
+                    terrain[rover.y][rover.x] = '|' # Vertical movement
                 elif move == 'E':
                     rover.x += 1
-                    terrain[rover.y][rover.x] = '-'
+                    terrain[rover.y][rover.x] = '-' # Horisontal movement
                 elif move == 'W':
                     rover.x -= 1
-                    terrain[rover.y][rover.x] = '-'
-    terrain[rover.y][rover.x] = '0'
+                    terrain[rover.y][rover.x] = '-' # Horisontal movement
+                    
+    terrain[rover.y][rover.x] = '0' # End potition
+    
     return intersection_points, terrain
 
 def print_terrain(terrain): # Argument/method that will print the terrain
@@ -71,6 +73,7 @@ def main(): # This is the main argument/method
 
     print("\nVisual representation Paths")
     print_terrain(terrain)
+    
     print("\nLegend:")
     print("X : Start")
     print("0 : End")
