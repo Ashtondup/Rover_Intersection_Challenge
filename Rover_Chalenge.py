@@ -50,7 +50,7 @@ def find_intersections(input_file): # Argument/method that opens the file and re
                     rover.x -= 1
                     terrain[rover.y][rover.x] = '-' # Horisontal movement
                     
-    terrain[rover.y][rover.x] = '0' # End potition
+            terrain[rover.y][rover.x] = '0' # End potition
     
     return intersection_points, terrain
 
