@@ -55,7 +55,7 @@ def find_intersections(input_file): # Argument/method that opens the file and re
     return intersection_points, terrain
 
 def print_terrain(terrain): # Argument/method that will print the terrain
-    for row in terrain:
+    for row in reversed(terrain):
         print(''.join(row))
 
 def main(): # This is the main argument/method
@@ -68,7 +68,8 @@ def main(): # This is the main argument/method
         print(f"An error ocurred while tryning to read the text file: {e}")
 
     print("Intersections")
-    for i, point in enumerate(intersection_points, start=1):
+    intersection_list = list(intersection_points)
+    for i, point in enumerate(reversed(intersection_list), start=1):
         print(f"Intersection point {i}: {point[0]} {point[1]}")
 
     print("\nVisual representation Paths")
